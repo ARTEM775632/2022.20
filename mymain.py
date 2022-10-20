@@ -2,6 +2,7 @@ import pygame
 from pygame import *
 from constants import *
 from MyPlayer import Player
+
 from pudge import Ogr
 import random as rnd
 
@@ -13,10 +14,17 @@ class Main():
         self.running = True
         self.main_loop()
 
+    def make_ogr(self):
+        ogr_image = rnd.choice(ogr_images)
+        ogr = Ogr((rnd.randint(0, SCREEN_WIDTH), -20), ogr_image, rnd.randint(3, 5))
+        ogr_group.add(ogr)
+
     def handle_events(self):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 self.running = False
+            if event.type == SPAWN_OGR:
+                self.make_ogr()
 
             elif event.type == KEYDOWN:
                 if event.key == K_RIGHT:
@@ -81,10 +89,7 @@ class Main():
             self.handle_events()
             clock.tick(200)
 
-    def make_ogr(self):
-        ogr_image = rnd.choice(ogr_images)
-        ogr = Ogr((rnd.randint(0, SCREEN_WIDTH), -20), ogr_image, rnd.randint(3, 5))
-        ogr_group.add(ogr)
+
 
 
 
