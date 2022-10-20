@@ -16,7 +16,7 @@ class Main():
 
     def make_ogr(self):
         ogr_image = rnd.choice(ogr_images)
-        ogr = Ogr((rnd.randint(0, SCREEN_WIDTH), -20), ogr_image, rnd.randint(3, 5))
+        ogr = Ogr((rnd.randint(0, SCREEN_HEIGHT), 400), ogr_image, rnd.randint(3, 5))
         ogr_group.add(ogr)
 
     def handle_events(self):
