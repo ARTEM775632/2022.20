@@ -2,7 +2,7 @@ import random as rnd
 import pygame
 from constants import *
 class Ogr(pygame.sprite.Sprite):
-    def _init_(self, pos, image, life):
+    def __init__(self, pos, image, life):
         super().__init__()
         self.image = image
         self.rect = self.image.get_rect(center=pos)

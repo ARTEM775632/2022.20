@@ -78,7 +78,7 @@ class Main():
         self.screen.blit(self.background,(0,0))
         self.player.render(screen)
         ogr_group.draw(screen)
-        ogr_group.update()
+
         pygame.display.flip()
 
     def main_loop(self):
