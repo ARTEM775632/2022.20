@@ -2,6 +2,8 @@ import pygame
 from pygame import *
 from constants import *
 from MyPlayer import Player
+from pudge import Ogr
+import random as rnd
 
 class Main():
     def __init__(self, screen):
@@ -15,6 +17,7 @@ class Main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 self.running = False
+
             elif event.type == KEYDOWN:
                 if event.key == K_RIGHT:
                     self.player.walk=True
@@ -66,6 +69,8 @@ class Main():
 
         self.screen.blit(self.background,(0,0))
         self.player.render(screen)
+        ogr_group.draw(screen)
+        ogr_group.update()
         pygame.display.flip()
 
     def main_loop(self):
@@ -76,7 +81,24 @@ class Main():
             self.handle_events()
             clock.tick(200)
 
+    def make_ogr(self):
+        ogr_image = rnd.choice(ogr_images)
+        ogr = Ogr((rnd.randint(0, SCREEN_WIDTH), -20), ogr_image, rnd.randint(3, 5))
+        ogr_group.add(ogr)
+
+
+
+
 pygame.init()
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 clock = pygame.time.Clock()
+SPAWN_OGR = pygame.USEREVENT+1
+pygame.time.set_timer(SPAWN_OGR, 1000)
+temp = pygame.image.load('data/ogre.png').convert_alpha()
+i = []
+for f in range(5):
+    i.append(temp.subsurface(f * 71, 0, 71, 71))
+ogr_images = i
+# Making groups
+ogr_group = pygame.sprite.Group()
 game = Main(screen)
