@@ -43,6 +43,10 @@ class Player():
             i.append(temp.subsurface(k*60, 100, 60, 88))
         self.left_images = i
 
+        i = []
+        i.append(temp.subsurface(60, 100, 60, 88))
+        self.up_images = i
+
     def moove(self):
 
 
@@ -72,6 +76,8 @@ class Player():
                 self.image[self.direction]= self.right_images[int(self.frame)]
             if self.direction == LEFT:
                 self.image[self.direction]= self.left_images[int(self.frame)]
+            if self.direction == UP:
+                self.image[self.direction]= self.up_images[int(self.frame)]
         screen.blit(self.image[self.direction], (self.x, self.y))
     def render_ui(self, screen):
         pass
