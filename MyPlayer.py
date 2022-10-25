@@ -35,16 +35,21 @@ class Player():
 
         i = []
         for j in range(8):
-            i.append(temp.subsurface(j*60, 186, 60, 88))
+            i.append(temp.subsurface(j*59, 186, 60, 88))
         self.right_images = i
 
         i = []
         for k in range(8):
-            i.append(temp.subsurface(k*60, 100, 60, 88))
+            i.append(temp.subsurface(k*59, 100, 60, 88))
         self.left_images = i
 
         i = []
-        i.append(temp.subsurface(60, 100, 60, 88))
+     #   i.append(temp.subsurface(60, 100, 60, 88))
+     #   self.up_images = i
+        for k in range(4):
+            i.append(temp.subsurface(240+(k*59), 0, 60, 88))
+        for k in range(4):
+            i.append(temp.subsurface(240+(k*59), 0, 60, 88))
         self.up_images = i
 
     def moove(self):

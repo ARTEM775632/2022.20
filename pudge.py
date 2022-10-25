@@ -18,6 +18,25 @@ class Ogr(pygame.sprite.Sprite):
         if self.rect.y > SCREEN_HEIGHT:
             self.speed_y = -self.speed_y
 
+        if self.rect.left > SCREEN_WIDTH:
+            self.rect.right = 0
+
+        if self.rect.x < ship.x:
+            self.speed_x += 1
+        if self.rect.x > ship.x:
+            self.speed_x -= 1
+
+        if self.rect.y < ship.y:
+            self.speed_y += 1
+        if self.rect.y > ship.y:
+            self.speed_y -= 1
+
+        if self.speed_x > OGR_SPEED:  self.speed_x = OGR_SPEED
+        if self.speed_x < -OGR_SPEED: self.speed_x = -OGR_SPEED
+
+        if self.speed_y > OGR_SPEED:  self.speed_y = OGR_SPEED
+        if self.speed_y < -OGR_SPEED: self.speed_y=-OGR_SPEED
+
 
 
 

@@ -50,6 +50,10 @@ class Main():
                     else:
                         self.player.state = ALIVE
 
+                elif event.type == p.MOUSEBUTTONDOWN:
+                    # if len(laser_group) == 0:
+                    make_laser()
+
                 if event.key == K_z:
                     if self.player.state != SHOOT:
                         self.player.state = SHOOT
@@ -78,8 +82,9 @@ class Main():
         self.screen.blit(self.background,(0,0))
         self.player.render(screen)
         ogr_group.draw(screen)
-
+        ogr_group.update(self.player)
         pygame.display.flip()
+
 
     def main_loop(self):
         while self.running == True:
@@ -87,7 +92,7 @@ class Main():
                 self.player.moove()
             self.render()
             self.handle_events()
-            clock.tick(200)
+            clock.tick(50)
 
 
 
